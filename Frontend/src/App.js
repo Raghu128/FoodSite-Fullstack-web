@@ -1,10 +1,10 @@
 import './App.css';
 import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from './Layout.js';
-import AddFoodPage from './components/AddFoodPage.jsx';
-import SignUp from './components/SignUp.jsx';
-import Login from './components/Login.jsx';
+import Layout from './pages/Layout.jsx';
+import AddFoodPage from './pages/AddFoodPage.jsx';
+import SignUp from './pages/SignUp.jsx';
+import Login from './pages/Login.jsx';
 import { fetchCardData } from './redux/cardData.js';
 import { useSelector, useDispatch } from 'react-redux';
 import AOS from 'aos';
