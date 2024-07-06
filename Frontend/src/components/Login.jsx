@@ -6,6 +6,7 @@ function Login() {
 
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const [mess, setmess] = useState("");
 
   const navigate = useNavigate();
 
@@ -30,9 +31,9 @@ function Login() {
       if (response.ok) {
         console.log("user has been Login");
         navigate("/");
-        // updateLogin
         
       } else {
+        setmess("Invalide input")
         console.error("Failed to user");
       }
     } catch (error) {
@@ -47,6 +48,7 @@ function Login() {
   return (
     <div className="login-container" data-aos="fade-up">
       <form className="login-form" onSubmit={handleSubmit}>
+        <h1 id="signup-mess"> {mess} </h1>
         <h2>Login</h2>
         {/* <div className="form-group">
           <label htmlFor="name">Name</label>

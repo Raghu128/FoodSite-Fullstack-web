@@ -434,8 +434,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
   height: 100vh;
   background-color: #000000;
+}
+
+#signup-mess{
+  margin: 1rem;
+  font-size: 1rem;
+  color: red;
 }
 
 .login-form {
@@ -484,8 +491,15 @@
 }
 
 
-
-
+.admin-secret-code {
+  font-size: 1rem;
+  margin: 1rem;
+}
+.admin-secret-pass {
+  padding: 0.5rem;
+  border: 1px solid white;
+  border-radius: 0.2rem;
+}
 
 
 /* add food css */

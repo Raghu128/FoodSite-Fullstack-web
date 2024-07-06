@@ -12,16 +12,16 @@ router.get('/', async (req, res) => {
     try {
         const token = req.cookies.uid;
         if (!token) {
-          return res.status(400).json({ message: "You are not logged in" });
+          return res.status(201).json({ message: "You are not logged in" });
         }
         
         const user = getUser(token);
         
         if (user) {
           const dbUser = await User.findOne({email: user.email });
-          return res.status(200).json({dbUser });
+          return res.status(200).json({dbUser});
         } else {
-          return res.status(400).json({ message: "You are not logged in" });
+          return res.status(201).json({ message: "You are not logged in" });
         }
         
       } catch (error) {

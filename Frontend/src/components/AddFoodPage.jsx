@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchCardData } from "../redux/cardData";
 
 function AddFoodPage() {
@@ -9,6 +9,16 @@ function AddFoodPage() {
   const [imgUrl, setImgUrl] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const isLogin = useSelector((state) => state.userLogin.isLogin);
+
+  if(!isLogin) return (
+    <div className="not-auth">
+      <h1>You are not authorized to this link</h1>
+    </div>
+  )
+
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();

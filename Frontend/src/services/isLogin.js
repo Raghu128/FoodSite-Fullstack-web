@@ -8,11 +8,15 @@ async function fetchingLogin(dispatch) {
     });
 
     if (response.ok) {
-      const data = (await response.json()).dbUser;
-      dispatch(updateLogin(data));
+      const data = await response.json();
+      const user = data.dbUser;
+      if(user) {
+          dispatch(updateLogin(user));
+      }
+      // else console.log("User is not login");
     } else {
       const errorData = await response.json();
-      console.error("Failed to fetch user data:", errorData.message);
+          console.error("Failed to fetch user data:", errorData.message);
     }
   } catch (error) {
     console.error("Error during fetch:", error);
