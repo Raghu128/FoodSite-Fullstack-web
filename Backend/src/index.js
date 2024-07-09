@@ -8,6 +8,7 @@ import loginRouter from "./routes/login.js";
 import cookieParser from "cookie-parser";
 import isLoginRouter from './routes/isLogin.js'
 import logoutRouter from './routes/logout.js'
+import cartRoutes from './routes/cartRoutes.js'
 
 const corsOptions = {
   origin: "http://localhost:3001",
@@ -20,6 +21,7 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use(cookieParser());
 
+app.use('/api/cart', cartRoutes);
 app.use('/api/isLogin', isLoginRouter);
 app.use('/api/logout', logoutRouter);
 app.use("/api/data", data);

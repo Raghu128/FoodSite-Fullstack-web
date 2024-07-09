@@ -1,9 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchCardData = createAsyncThunk("fetchCardData", async (_, { dispatch }) => {
-  const response = await fetch("http://localhost:3000/api/data");
-  const data = await response.json();
+  const response = await fetch("http://localhost:3000/api/data", {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json', 
+    },
+  });
   
+  const data = await response.json();
   return data;
 });
 

@@ -9,8 +9,6 @@ const userSlice = createSlice({
   },
   reducers: {
     updateLogin: (state, action) => {
-      console.log(action.payload.role);
-
       state.isLogin = true;
       state.role = action.payload.role;
       state.userName = action.payload.name;

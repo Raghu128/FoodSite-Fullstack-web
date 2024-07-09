@@ -5,6 +5,7 @@ import Layout from './pages/Layout.jsx';
 import AddFoodPage from './pages/AddFoodPage.jsx';
 import SignUp from './pages/SignUp.jsx';
 import Login from './pages/Login.jsx';
+import Cart from './pages/Cart.jsx'
 import { fetchCardData } from './redux/cardData.js';
 import { useSelector, useDispatch } from 'react-redux';
 import AOS from 'aos';
@@ -23,7 +24,7 @@ function App() {
             duration: 2000,
             once: true,
       });
-  }, [dispatch]);
+  }, []);
 
 
   
@@ -40,6 +41,7 @@ function App() {
         <Route path='/addFood' element={<AddFoodPage/>}></Route>
         <Route path='/signup' element={<SignUp/>}></Route>
         <Route path='/login' element={<Login/>}></Route>
+        <Route path='/cart' element={<Cart/>}></Route>
       </Routes>
     </BrowserRouter>
 

@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const cartSlice = createSlice({
   name: "blocked",
   initialState: {
-    block: true,
+    block: false,
     cartItems: [],
     totalAmount: 0,
   },
@@ -14,7 +14,7 @@ const cartSlice = createSlice({
     addCartItem: (state, action) => {
       state.totalAmount += action.payload.price;
       let checked = true;
-
+      
       state.cartItems.forEach((item) => {
         if (item[1]._id === action.payload._id) {
           item[0]++;
@@ -22,10 +22,12 @@ const cartSlice = createSlice({
           return;
         }
       });
-
+      
       if (checked === true) {
+        console.log("Added");
         state.cartItems.push([1, action.payload]);
       }
+      console.log(state.cartItems);
     },
     removeCartItem: (state, action) => {
       state.totalAmount -= action.payload.price;

@@ -13,13 +13,12 @@ async function fetchingLogin(dispatch) {
       if(user) {
           dispatch(updateLogin(user));
       }
-      // else console.log("User is not login");
     } else {
       const errorData = await response.json();
-          console.error("Failed to fetch user data:", errorData.message);
+          console.error("Failed to fetch user data");
     }
   } catch (error) {
-    console.error("Error during fetch:", error);
+    console.error("Error during fetch:");
   }
 }
 

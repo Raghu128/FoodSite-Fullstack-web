@@ -1,43 +1,46 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { updateBlock } from "../redux/cartSlice";
-import Cart from "./Cart";
-import { useNavigate } from "react-router-dom";
-import LoginDropDown from "./LoginDropDown";
-
-
+import LoginDropDown from "./LoginDropDown.jsx";
 
 const Header = () => {
-  const dispatch = useDispatch();
-  const blocked = useSelector((state) => state.cart.block);
-  const navigate = useNavigate();
-  const isLogin = useSelector((state) => state.userLogin.isLogin);
-
- 
   return (
-    <div className="header-conainer">
-
-    <div className="header">
-      <div className="pages-link">
-        <button>Foodify</button>
-        {isLogin === false ? (<button onClick={() => {
-          navigate('/login')
-        }}>Login</button>) : <LoginDropDown/>}
-      </div>
-
-      <div className="cart">
-        <h1
-          onClick={() => {
-            dispatch(updateBlock());
-          }}
+    <div>
+      <nav className="navbar navbar-expand-lg bg-black ">
+        <div className="container-fluid">
+          <a className="navbar-brand text-white" href="#">
+            Foodify
+          </a>
+          <button
+            className="navbar-toggler bg-dark"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
           >
-          {(blocked === true ? "Cart" : "X")}
-        </h1>
-        <Cart />
+            <span className="navbar-toggler-icon bg-dark"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <LoginDropDown />
+            </ul>
+            <form className="d-flex" role="search">
+              <input
+                className="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button className="btn btn-outline-success" type="submit">
+                Search
+              </button>
 
-      </div>
-    </div>
+              <button className="btn btn-outline-success ms-2">Cart</button>
+            </form>
           </div>
+        </div>
+      </nav>
+    </div>
   );
 };
 
