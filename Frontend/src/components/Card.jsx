@@ -10,14 +10,12 @@ function Cards() {
   const [cartItems, setCartItems] = useState([]);
   const [fetched, setfetched] = useState(false);
   const isLogin = useSelector((state) => state.userLogin.isLogin);
-  // const isLogin = useState(useSelector((state) => state.userLogin.isLogin));
 
   const fetchCartItems = async () => {
     try {
       const data = await fetchingCartItem();
-      setCartItems(data);
+      if(data) setCartItems(data.items);
       setfetched(true);
-      // console.log(data);
     } catch (error) {
       console.error("Error fetching cart items:", error);
     }
@@ -25,7 +23,7 @@ function Cards() {
 
   useEffect(() => {
      fetchCartItems();
-  }, [isLogin]);
+  }, []);
 
   if (!fetched && isLogin === true) {
     return <p>Loading cart items...</p>;

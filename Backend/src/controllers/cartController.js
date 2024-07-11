@@ -30,8 +30,7 @@ const getCartItem = async (req, res) => {
     if (!cart) {
       return res.status(404).json({ message: "Cart not found" });
     }
-
-    return res.json(cart.items);
+    return res.json(cart);
   } catch (error) {
     res.status(500).json({ message: "Internal Server Error" });
   }

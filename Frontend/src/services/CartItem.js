@@ -10,7 +10,7 @@ const addItemToCart = async (item) => {
     });
 
     if (response.ok) {
-      const data = await response.json();
+      // const data = await response.json();
     } else {
       console.error("Failed to add item to cart");
     }
@@ -31,7 +31,7 @@ async function deductCartItem(foodId) {
     });
 
     if (response.ok) {
-      const updatedCart = await response.json();
+      // const updatedCart = await response.json();
       console.log("Cart updated");
     } else {
       console.error("Failed to deduct item from cart");
@@ -61,7 +61,7 @@ async function fetchingCartItem() {
   } catch (error) {
     console.error("Error:", error);
   }
-  return [{}];
+  return null;
 }
 
 export { addItemToCart, deductCartItem, fetchingCartItem };

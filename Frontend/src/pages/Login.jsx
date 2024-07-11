@@ -46,21 +46,17 @@ function Login() {
   
 
   return (
+    <>
+    <div className="container-fluid ">
+      <div className="row">
+      <button className="btn btn btn-outline-primary col-1 m-3" onClick={() => navigate('/')}>Home</button>
+      {/* <button type="button" className="btn btn-outline-primary">Primary</button> */}
+      </div>
+    </div>
     <div className="login-container" data-aos="fade-up">
-      <form className="login-form" onSubmit={handleSubmit}>
+      <form className="login-form " onSubmit={handleSubmit}>
         <h1 id="signup-mess"> {mess} </h1>
         <h2>Login</h2>
-        {/* <div className="form-group">
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-            placeholder="write name ..."
-          />
-        </div> */}
         <div className="form-group">
           <label htmlFor="email">Email</label>
           <input
@@ -83,27 +79,6 @@ function Login() {
             placeholder="Password"
           />
         </div>
-        {/* <div className="radio-group">
-          <label className="radio-label">
-            <input
-              type="radio"
-              name="role"
-              value="user"
-              onClick={() => {
-                setType(false);
-              }}
-            />{" "}
-            User
-          </label>
-          <label
-            className="radio-label"
-            onClick={() => {
-              setType(true);
-            }}
-          >
-            <input type="radio" name="role" value="admin" /> Admin
-          </label>
-        </div> */}
 
         <button type="submit" className="add-button">
           Login
@@ -112,6 +87,7 @@ function Login() {
       </form>
       
     </div>
+    </>
   );
 }
 

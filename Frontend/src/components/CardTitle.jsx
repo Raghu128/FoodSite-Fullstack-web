@@ -1,15 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { addItemToCart, deductCartItem } from "../services/CartItem.js";
+import { useNavigate } from "react-router-dom";
 
 const CardTitle = ({ CardDatas }) => {
   const CardData = CardDatas[0];
   const quant = CardDatas[1];
   const [cnt, setcnt] = useState(Number(quant));
   const isLogin = useSelector((state) => state.userLogin.isLogin);
+  const navigate = useNavigate();
 
   function handleAddToCart() {
-    if (!isLogin) return;
+    if (!isLogin) {
+      navigate('/login');
+      return;
+    }
 
     const item = {
       foodId: CardData._id,
@@ -21,10 +26,15 @@ const CardTitle = ({ CardDatas }) => {
   }
 
   const handleDecrementInCart = () => {
-    if (!isLogin) return;
+    if (!isLogin) {
+      navigate('/login');
+      return;
+    }
     setcnt(cnt - 1);
     deductCartItem(CardData._id);
   };
+
+  
 
   return (
     <div className="card-titles" data-aos="fade-up">
@@ -45,7 +55,7 @@ const CardTitle = ({ CardDatas }) => {
             Add to Cart
           </button>
         ) : (
-          <div className="counter-container">
+          <div className="counter-container border p-2">
             <button className="counter-button" onClick={handleDecrementInCart}>
               -
             </button>
