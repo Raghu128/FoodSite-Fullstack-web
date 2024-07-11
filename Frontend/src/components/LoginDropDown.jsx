@@ -2,13 +2,13 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import handleLogout from "../services/logout.js";
-import { useNavigate } from "react-router-dom";
 
 function LoginDropDown() {
   const userName = useSelector((state) => state.userLogin.userName);
   const dispatch = useDispatch();
   const isLogin = useSelector((state) => state.userLogin.isLogin);
-  const navigate = useNavigate();
+
+
   if (isLogin === true)
     return (
       <li className="nav-item dropdown">
@@ -17,7 +17,7 @@ function LoginDropDown() {
           role="button"
           data-bs-toggle="dropdown"
           aria-expanded="false"
-          onClick={() => navigate('/')}
+          href="/"
         >
           {userName}
         </a>
@@ -28,9 +28,8 @@ function LoginDropDown() {
               className="dropdown-item text-danger rounded"
               onClick={() => {
                 handleLogout(dispatch);
-                navigate('/login');
-                // window.location.reload();
               }}
+               href="/"
             >
               Logout
             </a>
@@ -46,18 +45,19 @@ function LoginDropDown() {
         role="button"
         data-bs-toggle="dropdown"
         aria-expanded="false"
+        href="/"
       >
         Bot
       </a>
 
       <ul className="dropdown-menu bg-black">
         <li>
-          <a className="dropdown-item text-danger rounded" onClick={() => navigate("/login")}>
+          <a className="dropdown-item text-danger rounded" href="/login">
             LogIn
           </a>
         </li>
         <li>
-          <a className="dropdown-item text-danger rounded" onClick={() => navigate("/signup")}>
+          <a className="dropdown-item text-danger rounded" href="/signup">
             Create new user
           </a>
         </li>
