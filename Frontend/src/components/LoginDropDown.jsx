@@ -29,7 +29,7 @@ function LoginDropDown() {
               onClick={() => {
                 handleLogout(dispatch);
               }}
-               href="/"
+               href="/login"
             >
               Logout
             </a>

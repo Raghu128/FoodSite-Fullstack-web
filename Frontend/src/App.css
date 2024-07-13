@@ -1,9 +1,9 @@
-*{
+/* *{
   margin: 0;
   padding: 0;
   background-color: black;
   color: white;
-}
+} */
 
 
 .header-conainer{
@@ -396,7 +396,6 @@
 
 .counter-container {
   width: 92%;
-  /* background: rgb(53, 53, 228); */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -440,15 +439,76 @@
 
 
 /* login css */
+@media screen and (max-width: 803px) {
+  .login-form-container {
+    flex-direction: column;
+  }
 
-/* Basic styling for the login component */
+  .login-right-container {
+    height: auto;
+  }
+}
+
+.alert {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 30vmin;
+}
+
+
+.login-avatar-img {
+  width: 40vmin;
+}
+
+.login-form-container {
+  height: 100vh;
+  display: flex;
+  padding: 2vmin 4vmin;
+  justify-content: center;
+  align-items: center;
+  gap: 3vmin;
+  /* background: rgba(128, 128, 128, 0.487); */
+
+}
+
+.login-right-container {
+  border: 2px solid rgba(87, 164, 231, 0.683);
+  width: 50vmin;
+  /* height: 50vmin; */
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 5vmin 5vmin;
+}
+
+.login-form-inputs-box {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+#signup-mess {
+  font-size: 3rem;
+  color: red;
+}
+
+/* .home-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
   height: 100vh;
-  background-color: #000000;
+  background-color: #ca0c0c00;
 }
 
 #signup-mess{
@@ -461,7 +521,7 @@
   border: 2px solid white;
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(45, 44, 44, 0.87);
   width: 300px;
   text-align: center;
 }
@@ -511,7 +571,12 @@
   padding: 0.5rem;
   border: 1px solid white;
   border-radius: 0.2rem;
-}
+} */
+
+
+
+
+
 
 
 /* add food css */

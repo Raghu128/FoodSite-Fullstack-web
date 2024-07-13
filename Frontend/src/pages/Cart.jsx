@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
 import { fetchingCartItem } from "../services/CartItem.js";
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const [isfetched, setfetched] = useState(false);
   const [totalAmount, setAmount] = useState(0);
   const navigate = useNavigate();
+  const [isLogin, setLogin] = useState(false);
 
   useEffect(() => {
     const fetchCartItems = async () => {
@@ -15,6 +17,7 @@ const Cart = () => {
         if(data) {
           setCartItems(data.items);
           setAmount(data.totalPrice);
+          setLogin(true);
         }
         setfetched(true);
       } catch (error) {
@@ -35,6 +38,13 @@ const Cart = () => {
         </div>
       </div>
     );
+
+    if(!isLogin) {
+      return (
+        <div>404 not found</div>
+      )
+  
+    }
 
   return (
     <div className="container-fluid ">

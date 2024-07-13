@@ -1,9 +1,11 @@
 import React from "react";
 import {useNavigate} from 'react-router-dom'
 import LoginDropDown from "./LoginDropDown.jsx";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   let navigate = useNavigate();
+  const isLogin = useSelector((state) => state.userLogin.isLogin);
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-black ">
@@ -37,7 +39,11 @@ const Header = () => {
                 Search
               </button>
 
-              <button className="btn btn-outline-success ms-2" onClick={() => navigate('/cart')}>Cart</button>
+              <button className="btn btn-outline-success ms-2" onClick={() => {
+                if(isLogin)
+                    navigate('/cart');
+                else navigate('/login')
+              }}>Cart</button>
             </form>
           </div>
         </div>
