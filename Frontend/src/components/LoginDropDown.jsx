@@ -8,7 +8,6 @@ function LoginDropDown() {
   const dispatch = useDispatch();
   const isLogin = useSelector((state) => state.userLogin.isLogin);
 
-
   if (isLogin === true)
     return (
       <li className="nav-item dropdown">
@@ -22,14 +21,14 @@ function LoginDropDown() {
           {userName}
         </a>
 
-        <ul className="dropdown-menu bg-black ">
+        <ul className="dropdown-menu bg-white ">
           <li>
             <a
               className="dropdown-item text-danger rounded"
               onClick={() => {
                 handleLogout(dispatch);
               }}
-               href="/login"
+              href="/login"
             >
               Logout
             </a>
@@ -50,9 +49,9 @@ function LoginDropDown() {
         Bot
       </a>
 
-      <ul className="dropdown-menu bg-black">
+      <ul className="dropdown-menu bg-white">
         <li>
-          <a className="dropdown-item text-danger rounded" href="/login">
+          <a className="dropdown-item  text-danger rounded" href="/login">
             LogIn
           </a>
         </li>

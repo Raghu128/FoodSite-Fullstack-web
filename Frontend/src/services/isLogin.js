@@ -15,11 +15,12 @@ async function fetchingLogin(dispatch) {
       }
     } else {
       const errorData = await response.json();
-          console.error("Failed to fetch user data");
+          console.error("Failed to fetch user data" ,errorData);
     }
   } catch (error) {
-    console.error("Error during fetch:");
+    console.error("Error during fetch:", error);
   }
+  
 }
 
 

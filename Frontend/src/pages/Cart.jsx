@@ -1,13 +1,10 @@
 import React, { useEffect, useState} from "react";
 import { fetchingCartItem } from "../services/CartItem.js";
-import { useNavigate} from "react-router-dom";
-import { useSelector } from "react-redux";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const [isfetched, setfetched] = useState(false);
   const [totalAmount, setAmount] = useState(0);
-  const navigate = useNavigate();
   const [isLogin, setLogin] = useState(false);
 
   useEffect(() => {
@@ -21,7 +18,7 @@ const Cart = () => {
         }
         setfetched(true);
       } catch (error) {
-        // console.error("Error fetching cart items:", error);
+        console.error("Error fetching cart items:");
       }
     };
 
@@ -48,18 +45,15 @@ const Cart = () => {
 
   return (
     <div className="container-fluid ">
-      <div className="row">
-        <button
-          className="btn btn btn-outline-primary col-1 m-3"
-          onClick={() => navigate("/")}
-        >
-          Home
-        </button>
-      </div>
-
       <div className="cart-item row m-5 justify-content-center">
         <div className="alert alert-primary" role="alert">
-          Total Amount : {totalAmount}
+          <div>
+
+          <h5>Total Amount : {totalAmount}</h5>
+          </div>
+          <br />
+          <p>Total Items : {cartItems.length}</p>
+          <p></p>
         </div>
         {cartItems.map((item) => {
           return (

@@ -37,7 +37,7 @@ async function deductCartItem(foodId) {
       console.error("Failed to deduct item from cart");
     }
   } catch (error) {
-    console.error("Error:", error);
+    console.error("Error: cart item not remove");
   }
 }
 
@@ -59,7 +59,7 @@ async function fetchingCartItem() {
       console.error("Failed to fetch item from cart");
     }
   } catch (error) {
-    console.error("Error:", error);
+    console.error("Error: cart fetching problem");
   }
   return null;
 }

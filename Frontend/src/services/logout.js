@@ -14,7 +14,7 @@ async function handleLogout(dispatch) {
         console.error("Failed to logout");
       }
     } catch (error) {
-      console.error("Error during logout:", error);
+      console.error("Error during logout:");
     }
   }
 

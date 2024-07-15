@@ -12,7 +12,7 @@ const CardTitle = ({ CardDatas }) => {
 
   function handleAddToCart() {
     if (!isLogin) {
-      navigate('/login');
+      navigate("/login");
       return;
     }
 
@@ -27,23 +27,20 @@ const CardTitle = ({ CardDatas }) => {
 
   const handleDecrementInCart = () => {
     if (!isLogin) {
-      navigate('/login');
+      navigate("/login");
       return;
     }
     setcnt(cnt - 1);
     deductCartItem(CardData._id);
   };
 
-  
-
   return (
     <div className="card-titles" data-aos="fade-up">
       <div className="card-img-box">
         <img src={`${CardData.imgdata}`} alt={CardData.imgdata} />
-        <div className="img-hover-box">
-          <div className="shadow-box"></div>
+        <div className="shadow-box"> add-too-cart </div>
         </div>
-      </div>
+       
       <div className="card-titles-content">
         <h1 className="food-name">{CardData.rname}</h1>
         <h1 className="food-price">Price : $ {CardData.price}</h1>

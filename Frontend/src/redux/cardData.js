@@ -7,7 +7,6 @@ export const fetchCardData = createAsyncThunk("fetchCardData", async (_, { dispa
       'Content-Type': 'application/json', 
     },
   });
-  
   const data = await response.json();
   return data;
 });
@@ -28,7 +27,6 @@ const cardDataSlice = createSlice({
       state.isLoading = false;
     });
     builder.addCase(fetchCardData.rejected, (state, action) => {
-      console.log("Error", action.payload);
       state.isError = true;
     });
   },

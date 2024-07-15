@@ -24,7 +24,6 @@ const cartSlice = createSlice({
       });
       
       if (checked === true) {
-        console.log("Added");
         state.cartItems.push([1, action.payload]);
       }
       console.log(state.cartItems);

@@ -5,16 +5,17 @@ import { fetchCardData } from "../redux/cardData";
 
 function AddFoodPage() {
   const [restaurantName, setRestName] = useState("");
-  const [foodPrice, setFoodPrice] = useState(0);
+  const [foodPrice, setFoodPrice] = useState("");
   const [imgUrl, setImgUrl] = useState("");
+  const [message, setMess] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const isLogin = useSelector((state) => state.userLogin.isLogin);
-
-  if(!isLogin) return (
+  const role = useSelector((state) => state.userLogin.role);
+  
+  if(role !== "admin") return (
     <div className="not-auth">
-      <h1>You are not authorized to this link</h1>
+      <h1>404 not found</h1>
     </div>
   )
 
@@ -22,11 +23,16 @@ function AddFoodPage() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
+
+    if(imgUrl === "" || restaurantName === "" || foodPrice === "" ) {
+      setMess("Please Fill All Inputs");
+      return;
+    }
+    const price = parseInt(foodPrice);
     const data = {
       rname: restaurantName,
       imgdata: imgUrl,
-      price: foodPrice
+      price: price
     };
     
     try {
@@ -40,63 +46,103 @@ function AddFoodPage() {
 
 
       if (response.ok) {
+        dispatch(fetchCardData());
+        navigate('/');
       } else {
         console.error("Failed to add card");
       }
 
 
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error: during add food item");
     }
 
-
-    dispatch(fetchCardData());
-    navigate('/');
+    setMess("ERROR");
+   
   };
 
+
   return (
-    <div className="login-container" data-aos="fade-up">
-      <form className="login-form" onSubmit={handleSubmit}>
-        <h2>ADD ITEM</h2>
-        <div className="form-group">
-          <label htmlFor="img-url">Img-url</label>
-          <input
-            type="text"
-            id="img-url"
-            value={imgUrl}
-            onChange={(e) => setImgUrl(e.target.value)}
-            required
-            placeholder="https:www.img.com"
+    <>
+      <div className="container-fluid login-form-container">
+        <div className="login-left-container">
+          <img
+            className="login-avatar-img"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRE7ykybAVlXlJ7VBlkDlvo_bz5Bil2yaRTjQ&s"
+            alt=""
           />
-        </div>
-        <div className="form-group">
-          <label htmlFor="restaurant-name">Restaurant Name</label>
-          <input
-            type="text"
-            id="restaurant-name"
-            value={restaurantName}
-            onChange={(e) => setRestName(e.target.value)}
-            required
-            placeholder="Dhaba"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="food-price">Price</label>
-          <input
-            type="number"
-            id="food-price"
-            value={foodPrice}
-            onChange={(e) => setFoodPrice(Number(e.target.value))}
-            required
-          />
+          
         </div>
 
-        <button type="submit" className="add-button">
-          Add
-        </button>
-      </form>
-    </div>
+        <div className="login-right-container">
+          <form onSubmit={handleSubmit} className="login-form-inputs-box ">
+            {message === "" ? (
+              ""
+            ) : (
+              <div className="alert alert-danger" role="alert">
+                {message}!
+                <button type="button" className="btn-close" aria-label="Close" onClick={() => setMess("")}></button>
+              </div>
+            )}
+            <div className="form-floating ">
+              <input
+                type="text"
+                className="form-control"
+                id="floatingName1"
+                placeholder="name"
+                value={imgUrl}
+                onChange={(e) => setImgUrl(e.target.value)}
+              />
+              <label htmlFor="floatingInput">Img url ...</label>
+            </div>
+            <div className="form-floating ">
+              <input
+                type="text"
+                className="form-control"
+                id="floatingInput"
+                placeholder="restName"
+                value={restaurantName}
+                onChange={(e) => setRestName(e.target.value)}
+              />
+              <label htmlFor="floatingInput">Food name...</label>
+            </div>
+            <div className="form-floating">
+              <input
+                type="Number"
+                className="form-control"
+                id="floatingInput"
+                placeholder="foodPrice"
+                value={foodPrice}
+                onChange={(e) => setFoodPrice(e.target.value)}
+              />
+              <label htmlFor="floatingPassword">Price</label>
+            </div>
+
+            
+
+            <div className="row text-center">
+              <button
+                className="btn btn-primary"
+                onClick={handleSubmit}
+              >
+                Add
+              </button>
+            </div>
+          </form>
+          <div className="row">
+            <button
+              className="btn btn btn-outline-primary"
+              onClick={() => navigate("/")}
+            >
+              Home
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
   );
+
+
 }
 
 export default AddFoodPage;

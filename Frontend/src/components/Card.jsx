@@ -26,7 +26,15 @@ function Cards() {
   }, []);
 
   if (!fetched && isLogin === true) {
-    return <p>Loading cart items...</p>;
+    return (
+      <div className="conatiner-fluid justify-content-center align-items-center">
+        <div className="text-center">
+          <div className="spinner-border " role="status">
+            <span className="sr-only"></span>
+          </div>
+        </div>
+      </div>
+    )
   }
 
   return (

@@ -56,6 +56,7 @@ function SignUp() {
   return (
     <>
       <div className="container-fluid login-form-container">
+       
         <div className="login-left-container">
           <img
             className="login-avatar-img"
@@ -70,6 +71,7 @@ function SignUp() {
         </div>
 
         <div className="login-right-container">
+        <h1>Create New Acc..</h1>
           <form onSubmit={handleSubmit} className="login-form-inputs-box ">
             {message === "" ? (
               ""
@@ -155,101 +157,10 @@ function SignUp() {
               <a href="/login"> Already have an account</a>
             </div>
           </form>
-          <div className="row">
-            <button
-              className="btn btn btn-outline-primary"
-              onClick={() => navigate("/")}
-            >
-              Home
-            </button>
-          </div>
         </div>
       </div>
     </>
   );
-
-  // return (
-  //   <div className="login-container" data-aos="fade-up">
-  //     <form className="login-form" onSubmit={handleSubmit}>
-  //       <h1 id="signup-mess">{message}</h1>
-  //       <h2>SignUp</h2>
-  //       <div className="form-group">
-  //         <label htmlFor="name">Name</label>
-  //         <input
-  //           type="text"
-  //           id="name"
-  //           value={name}
-  //           onChange={(e) => setName(e.target.value)}
-  //           required
-  //           placeholder="Write name ..."
-  //         />
-  //       </div>
-  //       <div className="form-group">
-  //         <label htmlhtmlFor="email">Email</label>
-  //         <input
-  //           type="text"
-  //           id="email"
-  //           value={email}
-  //           onChange={(e) => setEmail(e.target.value)}
-  //           required
-  //           placeholder="Email"
-  //         />
-  //       </div>
-  //       <div className="form-group">
-  //         <label htmlhtmlFor="password">Password</label>
-  //         <input
-  //           type="text"
-  //           id="password"
-  //           value={pass}
-  //           onChange={(e) => setPass(e.target.value)}
-  //           required
-  //           placeholder="Password"
-  //         />
-  //       </div>
-  //       <div className="radio-group">
-  //         <label className="radio-label">
-  //           <input
-  //             type="radio"
-  //             name="role"
-  //             value="user"
-  //             // checked
-  //             onClick={() => {
-  //               setType(false);
-  //             }}
-  //           />{" "}
-  //           User
-  //         </label>
-  //         <label
-  //           className="radio-label"
-  //           onClick={() => {
-  //             setType(true);
-  //           }}
-  //         >
-  //           <input type="radio" name="role" value="admin" /> Admin
-  //         </label>
-  //       </div>
-  //       {type !== true ? (
-  //         ""
-  //       ) : (
-  //         <div className="admin-secret-code">
-  //           <label htmlhtmlFor="admin-password">Secret code : </label>
-  //           <input
-  //             className="admin-secret-pass"
-  //             type="text"
-  //             id="admin-password"
-  //             value={adminCode}
-  //             onChange={(e) => setAdminCode(e.target.value)}
-  //             required
-  //             placeholder="Password"
-  //           />
-  //         </div>
-  //       )}
-  //       <button type="submit" className="add-button">
-  //         SignUp
-  //       </button>
-  //     </form>
-  //   </div>
-  // );
 
 }
 
