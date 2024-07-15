@@ -36,12 +36,6 @@ const Cart = () => {
       </div>
     );
 
-    if(!isLogin) {
-      return (
-        <div>404 not found</div>
-      )
-  
-    }
 
   return (
     <div className="container-fluid ">

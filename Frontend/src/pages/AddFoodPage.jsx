@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCardData } from "../redux/cardData";
+import NotFoundPage from "./PageNotFound";
 
 function AddFoodPage() {
   const [restaurantName, setRestName] = useState("");
@@ -14,9 +15,7 @@ function AddFoodPage() {
   const role = useSelector((state) => state.userLogin.role);
   
   if(role !== "admin") return (
-    <div className="not-auth">
-      <h1>404 not found</h1>
-    </div>
+    <NotFoundPage/>
   )
 
 
@@ -129,14 +128,6 @@ function AddFoodPage() {
               </button>
             </div>
           </form>
-          <div className="row">
-            <button
-              className="btn btn btn-outline-primary"
-              onClick={() => navigate("/")}
-            >
-              Home
-            </button>
-          </div>
         </div>
       </div>
     </>

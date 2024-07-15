@@ -8,6 +8,7 @@ import Login from "./pages/Login.jsx";
 import Cart from "./pages/Cart.jsx";
 import Cards from "./components/Card.jsx";
 import Search from "./components/Search.jsx";
+import NotFoundPage from "./pages/PageNotFound.jsx";
 import { fetchCardData } from "./redux/cardData.js";
 import { useSelector, useDispatch } from "react-redux";
 import AOS from "aos";
@@ -57,6 +58,7 @@ function App() {
           <Route path="login" element={<Login />}></Route>
           <Route path="cart" element={<Cart />}></Route>
           <Route path="search" element={<Search />}></Route>
+          <Route path="*" element={<NotFoundPage/>}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
