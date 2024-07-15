@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import CardTitle from "./CardTitle.jsx";
 import AddFoodCard from "./AddFoodCard.jsx";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchingCartItem } from "../services/CartItem.js";
+import { updateIsSearch } from "../redux/searchFood.js";
 
 function Cards() {
   const cardData = useSelector((state) => state.cardData.data);
@@ -10,6 +11,11 @@ function Cards() {
   const [cartItems, setCartItems] = useState([]);
   const [fetched, setfetched] = useState(false);
   const isLogin = useSelector((state) => state.userLogin.isLogin);
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    dispatch(updateIsSearch(false));
+  }, [dispatch])
 
   const fetchCartItems = async () => {
     try {

@@ -10,7 +10,8 @@ const addItemToCart = async (item) => {
     });
 
     if (response.ok) {
-      // const data = await response.json();
+      const data = await response.json();
+      return data;
     } else {
       console.error("Failed to add item to cart");
     }
@@ -59,8 +60,9 @@ async function fetchingCartItem() {
       console.error("Failed to fetch item from cart");
     }
   } catch (error) {
-    console.error("Error: cart fetching problem");
+    console.error("Error: cart fetching problem", error);
   }
+ 
   return null;
 }
 

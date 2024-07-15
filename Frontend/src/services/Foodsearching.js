@@ -1,9 +1,7 @@
-import { useDispatch } from "react-redux";
 import { updateFetched, updateResult } from "../redux/searchFood";
 
 
-async function FetchingSearchedFood(query) {
-  const dispatch = useDispatch();
+async function FetchingSearchedFood({query, dispatch}) {
   dispatch(updateFetched(false));
     try {
       const response = await fetch("http://localhost:3000/api/data/search", {

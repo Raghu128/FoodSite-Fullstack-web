@@ -1,4 +1,4 @@
-import React, { useState }  from "react";
+import React, { useState, useEffect }  from "react";
 import {useNavigate} from 'react-router-dom'
 import LoginDropDown from "./LoginDropDown.jsx";
 import {FetchingSearchedFood} from '../services/Foodsearching.js'
@@ -13,9 +13,10 @@ const Header = () => {
   const dispatch = useDispatch();
   fetchingLogin(dispatch);
 
+  useEffect(() => {
+    FetchingSearchedFood({query, dispatch});
+  }, [query, dispatch]);
  
- 
-    FetchingSearchedFood(query);
 
   return (
     <div>
@@ -39,7 +40,7 @@ const Header = () => {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <LoginDropDown />
             </ul>
-            <form className="d-flex" role="search">
+            <form className="d-flex" role="search" id="search-form-id" name="search-form" onSubmit={(e) => e.preventDefault()}>
               {isSearch === true ? <input
                 className="form-control me-2"
                 type="search"
@@ -72,3 +73,4 @@ const Header = () => {
 };
 
 export default Header;
+

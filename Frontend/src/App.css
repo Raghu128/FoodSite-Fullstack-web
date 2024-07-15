@@ -223,13 +223,13 @@
 }
 
 
-@media screen and (max-width: 1099px) {
+@media screen and (max-width: 1300px) {
   .all-cards{
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media screen and (max-width: 683px) {
+@media screen and (max-width: 900px) {
   .all-cards{
     grid-template-columns: repeat(1, 1fr);
   }
@@ -251,8 +251,6 @@
   align-items: center;
   margin-top: 20px;
 }
-
-
 
 
 .card-img-box{

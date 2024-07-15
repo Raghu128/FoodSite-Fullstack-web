@@ -31,10 +31,10 @@ function App() {
     return (
       <div className="container">
         <div
-          class="spinner-border"
+          className="spinner-border"
           role="status"
         >
-          <span class="visually-hidden ">Loading...</span>
+          <span className="visually-hidden ">Loading...</span>
         </div>
         <span>Loading....</span>
       </div>

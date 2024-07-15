@@ -1,20 +1,25 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { fetchingCartItem } from "../services/CartItem.js";
+import { updateIsSearch } from "../redux/searchFood.js";
+import { useDispatch } from "react-redux";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const [isfetched, setfetched] = useState(false);
   const [totalAmount, setAmount] = useState(0);
-  const [isLogin, setLogin] = useState(false);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(updateIsSearch(false));
+  }, [dispatch]);
 
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
         const data = await fetchingCartItem();
-        if(data) {
+        if (data) {
           setCartItems(data.items);
           setAmount(data.totalPrice);
-          setLogin(true);
         }
         setfetched(true);
       } catch (error) {
@@ -36,14 +41,12 @@ const Cart = () => {
       </div>
     );
 
-
   return (
     <div className="container-fluid ">
       <div className="cart-item row m-5 justify-content-center">
         <div className="alert alert-primary" role="alert">
           <div>
-
-          <h5>Total Amount : {totalAmount}</h5>
+            <h5>Total Amount : {totalAmount}</h5>
           </div>
           <br />
           <p>Total Items : {cartItems.length}</p>
