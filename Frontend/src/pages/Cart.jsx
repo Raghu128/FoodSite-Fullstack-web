@@ -42,7 +42,7 @@ const Cart = () => {
     );
 
   return (
-    <div className="container-fluid ">
+    <div className="container-fluid">
       <div className="cart-item row m-5 justify-content-center">
         <div className="alert alert-primary" role="alert">
           <div>
