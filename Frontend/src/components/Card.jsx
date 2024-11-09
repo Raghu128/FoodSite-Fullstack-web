@@ -71,7 +71,7 @@ function Cards() {
             );
           })}
         </div>
-        <div className="carousel-inner">
+        {/* <div className="carousel-inner">
           {cardData && cardData.map((data, idx) => {
             if (idx === 0)
               return (
@@ -95,7 +95,7 @@ function Cards() {
               </div>
             );
           })}
-        </div>
+        </div> */}
         <button
           className="carousel-control-prev"
           type="button"

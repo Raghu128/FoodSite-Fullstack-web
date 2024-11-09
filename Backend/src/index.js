@@ -6,9 +6,9 @@ import bodyParser from "body-parser";
 import signUpRouter from "./routes/signUp.js";
 import loginRouter from "./routes/login.js";
 import cookieParser from "cookie-parser";
-import isLoginRouter from './routes/isLogin.js'
-import logoutRouter from './routes/logout.js'
-import cartRoutes from './routes/cartRoutes.js'
+import isLoginRouter from "./routes/isLogin.js";
+import logoutRouter from "./routes/logout.js";
+import cartRoutes from "./routes/cartRoutes.js";
 
 const corsOptions = {
   origin: "http://localhost:3001",
@@ -20,10 +20,16 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(cookieParser());
+app.use(
+  cors({
+    origin: ["https://deploy-mern-lwhq.vercel.app"],
+    credentials: true,
+  })
+);
 
-app.use('/api/cart', cartRoutes);
-app.use('/api/isLogin', isLoginRouter);
-app.use('/api/logout', logoutRouter);
+app.use("/api/cart", cartRoutes);
+app.use("/api/isLogin", isLoginRouter);
+app.use("/api/logout", logoutRouter);
 app.use("/api/data", data);
 app.use("/api/signUp", signUpRouter);
 app.use("/api/login", loginRouter);
