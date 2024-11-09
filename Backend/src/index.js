@@ -36,6 +36,10 @@ app.use("/api/login", loginRouter);
 app.get("/", (req, res) => {
   res.send("hello");
 })
-app.listen(3000, () => {
-  console.log("app is running at http://localhost:3000");
-});
+// app.listen(3000, () => {
+//   console.log("app is running at http://localhost:3000");
+// });
+
+app.listen(process.env.PORT || 4000, () => {
+  console.log(`app is running at http://localhost:${process.env.PORT || 4000}`);
+})
