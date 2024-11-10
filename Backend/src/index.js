@@ -26,6 +26,9 @@ app.use(
     credentials: true,
   })
 );
+app.get("/", (req, res) => {
+  res.send("hello");
+})
 
 app.use("/api/cart", cartRoutes);
 app.use("/api/isLogin", isLoginRouter);
@@ -33,9 +36,6 @@ app.use("/api/logout", logoutRouter);
 app.use("/api/data", data);
 app.use("/api/signUp", signUpRouter);
 app.use("/api/login", loginRouter);
-app.get("/", (req, res) => {
-  res.send("hello");
-})
 // app.listen(3000, () => {
 //   console.log("app is running at http://localhost:3000");
 // });
